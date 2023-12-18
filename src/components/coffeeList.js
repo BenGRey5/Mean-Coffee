@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './coffeeShop.js'
 
-function ItemList({ items, onSell, onDelete, onUpdate }) {
+function ItemList({ items, onSell, onDelete, onUpdate, onDescription }) {
     return (
         <div>
             {items.map(item => (
@@ -11,6 +11,7 @@ function ItemList({ items, onSell, onDelete, onUpdate }) {
                     onSell={() => onSell(item.id)}
                     onDelete={() => onDelete(item.id)}
                     onUpdate={(updatedItem) => onUpdate(item.id, updatedItem)}
+                    onDescription={() => onDescription(item.id)}
                 />
             ))}
         </div>
