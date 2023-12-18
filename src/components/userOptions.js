@@ -9,10 +9,10 @@ function OptionList({ onAddItem }) {
 
         // Assuming each coffee type has specific details
         const coffeeDetails = {
-            'Arabica': { name: 'Arabica Light Roast', description: 'Imported from Nicaragua $9.99 per pound', quantity: 130 },
-            'Robusta': { name: 'Robusta Medium Roast', description: 'Imported from Brazil $10.99 per pound', quantity: 130 },
-            'Liberica': { name: 'Liberica Light Roast', description: 'Imported from Philippines $8.99 per pound', quantity: 130 },
-            'Excelsa': { name: 'Excelsa Dark Roast', description: 'Imported from South America $11.99 per pound', quantity: 130 },
+            'Arabica': { name: 'Arabica Light Roast', description: 'Imported from Nicaragua', quantity: 130 },
+            'Robusta': { name: 'Robusta Medium Roast', description: 'Imported from Brazil', quantity: 130 },
+            'Liberica': { name: 'Liberica Light Roast', description: 'Imported from Philippines', quantity: 130 },
+            'Excelsa': { name: 'Excelsa Dark Roast', description: 'Imported from South America', quantity: 130 },
         };
 
         // Add the corresponding item when a radio button is selected

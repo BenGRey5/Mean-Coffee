@@ -1,4 +1,4 @@
-function Item({ item, onSell, onDelete, onDescription }) {
+function Item({ item, onSell, onDelete, }) {
     return (
         <div>
             <h2>{item.name}</h2>
@@ -6,7 +6,7 @@ function Item({ item, onSell, onDelete, onDescription }) {
             <p>{item.quantity > 0 ? `Quantity: ${item.quantity}` : 'Bag empty'}</p>
             <button onClick={() => onSell(item.id)}>Sell</button>
             <button onClick={() => onDelete(item.id)}>Delete</button>
-            <button onClick={() => onDescription(item)}>Description</button>
+            
         </div>
     );
 }

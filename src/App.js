@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import ItemList from "./components/coffeeList.js";
 import OptionList from "./components/userOptions.js";
-import ItemDescriptionForm from "./components/ItemDescriptionForm.js";
 
-function App() {
+const App = () => {
   const [items, setItems] = useState([
     { id: 1, name: "Arabica Light Roast", description: "Imported from Nicaragua $9.99 per pound", quantity: 130 },
     { id: 2, name: "Robusta Medium Roast", description: "Imported from Brazil $10.99 per pound", quantity: 130 },
@@ -14,7 +13,6 @@ function App() {
   const [newItem, setNewItem] = useState({ name: "", description: "", quantity: 0 });
 
   const [form1visible, setForm1Visible] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
 
   const addItem = (newItem) => {
     setItems((prevItems) => [...prevItems, { ...newItem, id: Date.now() }]);
@@ -33,26 +31,56 @@ function App() {
   };
 
   const toggle = () => {
-    if (form1visible) {
-      setForm1Visible(false);
+    setForm1Visible(!form1visible);
+  };
+
+  const CoffeeShop = () => {
+    const [form2visible, setForm2Visible] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const toggle2 = (item) => {
+      setSelectedItem(item);
+      setForm2Visible(!form2visible);
+    };
+
+    const getDescription = () => {
+      switch (selectedItem) {
+        case 'Arabica Light Roast':
+          return 'Imported from Nicaragua';
+        case 'Robusta Medium Roast':
+          return 'Imported from Brazil';
+        case 'Liberica Light Roast':
+          return 'Imported from Philippines';
+        case 'Excelsa Dark Roast':
+          return 'Imported from South America';
+        default:
+          return '';
+      }
+    };
+
+    if (form2visible) {
+      return (
+        <>
+          <OptionList onAddItem={addItem} />
+          <div>
+            <button onClick={() => toggle2(null)}>Return</button>
+            <h2>{selectedItem}</h2>
+            <p>{getDescription()}</p>
+          </div>
+        </>
+      );
     } else {
-      setForm1Visible(true);
+      return (
+        <div className="App">
+          <h1>The Mean Bean</h1>
+          <button onClick={() => toggle2()}>Description</button>
+          <ItemList items={items} onSell={sellItem} onDelete={deleteItem} onUpdate={updateItem} />
+        </div>
+      );
     }
   };
 
-  const showDescriptionForm = (item) => {
-    setSelectedItem(item);
-  };
-
-  const hideDescriptionForm = () => {
-    setSelectedItem(null);
-  };
-
-  if (selectedItem) {
-    return (
-      <ItemDescriptionForm item={selectedItem} onReturn={hideDescriptionForm} />
-    );
-  } else if (form1visible) {
+  if (form1visible) {
     return (
       <>
         <OptionList onAddItem={addItem} />
@@ -60,23 +88,12 @@ function App() {
       </>
     );
   } else {
-    return (
-      <div className="App">
-        <h1>The Mean Bean</h1>
-        <button onClick={() => toggle()}>Order</button>
-        <ItemList
-          items={items}
-          onSell={sellItem}
-          onDelete={deleteItem}
-          onUpdate={updateItem}
-          onDescription={showDescriptionForm}
-        />
-      </div>
-    );
+    return <CoffeeShop />;
   }
-}
+};
 
 export default App;
+
 
 
 
@@ -139,3 +156,5 @@ export default App;
 // }
 
 // export default App;
+
+
