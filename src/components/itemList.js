@@ -5,7 +5,7 @@ import OptionList from './optionList.js';
 function ItemList({ items, onSell, onDelete, onUpdate, onDescribe, selectItem, addItem }) {
     return (
         <div className="App">
-            <h1>The Mean Bean</h1>
+            <h1></h1>
             <OptionList onAddItem={addItem} />
             {items.map((item) => (
                 <Item
