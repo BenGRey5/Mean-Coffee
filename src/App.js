@@ -69,17 +69,21 @@ const App = () => {
   };
 
   const getDescription = () => {
-    switch (selectedItem?.name) {
-      case 'Arabica Light Roast':
-        return 'Arabica is a light roast imported from Nicaragua costing $9.99 per pound. It is renowned for its exquisite flavour, which is frequently described as sweeter and softer than other coffee species';
-      case 'Robusta Medium Roast':
-        return 'Robusta is a medium roast imported from Brazil costing $10.99 per pound. It is described as perfumey with notes of fruit and sugar tones.';
-      case 'Liberica Light Roast':
-        return 'Liberica is a light roast imported from the Philippines costing $8.99 per pound. Its almond-shaped beans have an exceptional aroma, almost floral and fruity, while its flavor is full and slightly smokey.';
-      case 'Excelsa Dark Roast':
-        return 'Excelsa is a dark roast imported from South America costing $11.99 per pound. Excelsa has a distinctive tart, fruity, dark, mysterious taste. In blends, it enhances the middle and back palate and lingering finish of the coffee, giving the cup more substance and power.';
-      default:
-        return '';
+    if (form3visible) {
+      switch (selectedItem?.name) {
+        case 'Arabica Light Roast':
+          return 'Arabica is a light roast imported from Nicaragua costing $9.99 per pound. It is renowned for its exquisite flavour, which is frequently described as sweeter and softer than other coffee species';
+        case 'Robusta Medium Roast':
+          return 'Robusta is a medium roast imported from Brazil costing $10.99 per pound. It is described as perfumey with notes of fruit and sugar tones.';
+        case 'Liberica Light Roast':
+          return 'Liberica is a light roast imported from the Philippines costing $8.99 per pound. Its almond-shaped beans have an exceptional aroma, almost floral and fruity, while its flavor is full and slightly smokey.';
+        case 'Excelsa Dark Roast':
+          return 'Excelsa is a dark roast imported from South America costing $11.99 per pound. Excelsa has a distinctive tart, fruity, dark, mysterious taste. In blends, it enhances the middle and back palate and lingering finish of the coffee, giving the cup more substance and power.';
+        default:
+          return '';
+      }
+    } else {
+      return ''; // Return an empty string if form3 is not visible
     }
   };
 
